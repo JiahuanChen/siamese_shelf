@@ -1,0 +1,24 @@
+net: "/core1/data/home/shizhan/jiahuan/siamese_shelf/res50/models/res50_multiprocess.prototxt"
+
+test_iter: 1000
+test_interval: 20000000
+
+base_lr: 0.001
+momentum: 0.9
+lr_policy: "step"
+stepsize: 270000
+
+gamma: 0.2
+
+
+iter_size: 2
+display: 10
+max_iter: 360000
+
+weight_decay: 0.0005
+
+snapshot: 10000
+snapshot_prefix: "/core1/data/home/shizhan/jiahuan/siamese_shelf/res50/models/resnet50_v9"
+solver_mode: GPU
+#device_id: 0
+test_initialization: false
