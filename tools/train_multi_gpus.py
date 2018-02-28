@@ -36,17 +36,6 @@ class SolverWrapper(object):
 
         self.solver.net.layers[0].set_roidb(gpu_id)            
 
-    def train_model(self, max_iters):
-        """Network training loop."""
-        timer = Timer()
-        while self.solver.iter < max_iters:
-            timer.tic()
-            self.solver.step(1)	    
-            print 'fc9_1:',sorted(self.solver.net.params['fc9_1'][0].data[0])[0]
-            timer.toc()
-            if self.solver.iter % (10 * self.solver_param.display) == 0:
-                print 'speed: {:.3f}s / iter'.format(timer.average_time)    
-
     def getSolver(self):
         return self.solver                      
 
@@ -108,6 +97,10 @@ def solve(proto, pretrained_model, gpus, timing, uid, rank):
         solver.step(1)
         # print 'rank', rank
         cnt += 1
+        # if cnt%500 == 0:
+        #         solver.snapshot()
+        #         print 'saved !!!'
+ 
 
 def train_model_multi_gpu(solver_prototxt, pretrained_model, gpus, timing=False):
     uid = caffe.NCCL.new_uid()
@@ -154,7 +147,7 @@ if __name__ == '__main__':
 
     e.g :
     python tools/train_multi_gpus.py \
-        --gpu 0,1 \
+        --gpu 0 \
         --solver /core1/data/home/shizhan/jiahuan/siamese_shelf/res50/training/solver_multigpu.prototxt \
         --weights /core1/data/home/shizhan/jiahuan/siamese_shelf/res50/models/siamese_res50.caffemodel
     

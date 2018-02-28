@@ -22,7 +22,8 @@ BBOX_SCALE = 3.0
 VIS = False
 
 ##### mutligpu
-METADATA_JSON_GPU = '/core1/data/home/shizhan/jiahuan/siamese_shelf/res50/training/data/test_gpu2.json'
-MAX_PAIR = 20
+# METADATA_JSON_GPU = '/core1/data/home/shizhan/jiahuan/siamese_shelf/res50/training/test.json'
+METADATA_JSON_GPU = '/data-4t/home/yanjia/siamese_shelf/length_data/json_data/test.json'
+MAX_PAIR = 8
 PN_RATIO = 2
 ITER_PERIMG = 2

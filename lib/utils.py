@@ -83,6 +83,7 @@ def im_list_to_blob(ims):
     """Convert a list of images into a network input.
     Assumes images are already prepared (means subtracted, BGR order, ...).
     """
+    # print 'ims',type(ims[0])
     max_shape = np.array([im.shape for im in ims]).max(axis=0)
     num_images = len(ims)
     blob = np.zeros((num_images, max_shape[0], max_shape[1], max_shape[2]),
